@@ -6,6 +6,7 @@ for (var i = 0; i < sum; i++) {
   document.querySelectorAll("button")[i].addEventListener("click", function() {
     var buttonInnerHtml = this.innerHTML;
     makeSound(buttonInnerHtml);
+    buttonAnimation(buttonInnerHtml);
   });
 }
 
@@ -13,6 +14,7 @@ for (var i = 0; i < sum; i++) {
 
 document.addEventListener("keypress",function(e){
   makeSound(e.key);
+  buttonAnimation(e.key);
 });
 function makeSound(key){
   switch (key) {
@@ -48,4 +50,12 @@ function makeSound(key){
        alert("wrong button pressed");
 
   }
+}
+
+function buttonAnimation(currentKey){
+    var a=document.querySelector("."+currentKey);
+    a.classList.add("pressed");
+    setTimeout(function(){
+      a.classList.remove("pressed");
+    },100);
 }
